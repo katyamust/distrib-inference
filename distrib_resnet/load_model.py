@@ -23,7 +23,7 @@ def broadcast_model(model_state,sc):
   return bc_model_state
 
 
-def get_model_for_eval(bc_model_state):
+def get_broadcasted_model_for_eval(bc_model_state):
   """Gets the broadcasted model."""
   model = get_model()
   model.load_state_dict(bc_model_state.value)
