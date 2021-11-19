@@ -23,22 +23,6 @@ def test_get_files_list():
     assert len(files) == 6 and files[4] == "./images/elephant.jpg"
 
 
-@pytest.fixture()
-def spark_df(spark):
-    """
-    Generate small sample dataframe for test
-    """
-    df = np.concatenate([np.arange(5),
-                     2*np.arange(5),
-                     3*np.arange(5),
-                     4*np.arange(5),
-                     5*np.arange(5)]).reshape(5,-1)
-    dff = map(lambda x: (int(x[1]), Vectors.dense(x[1:])), df)
-
-    mydf = spark.createDataFrame(dff,schema=["label", "features"])
-    return mydf
-
-
 def test_load_images_to_list():
     path = "./images/"
     l = load_images_to_list(path)
