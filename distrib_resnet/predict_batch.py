@@ -1,12 +1,15 @@
 import torch
 
+from pyspark.sql.functions import pandas_udf
 from pyspark.sql.types import ArrayType, FloatType
 from distrib_resnet.image_dataset import ImageDataset
 from distrib_resnet.load_model import get_broadcasted_model_for_eval
 import pandas as pd
 
+
 @pandas_udf(ArrayType(FloatType()))
-def predict_batch(input_data: pd.Series, device) -> pd.Series:
+#def predict_batch(input_data: pd.Series, device: what type?? ) -> pd.Series:
+def predict_batch(input_data, device ):
   mydata  = ImageDataset(input_data)
   loader = torch.utils.data.DataLoader(mydata, batch_size=ImageDataset.get_batch_size(), num_workers=1)
   model = get_broadcasted_model_for_eval()
