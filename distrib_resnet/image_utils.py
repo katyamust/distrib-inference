@@ -5,9 +5,6 @@ from tensorflow import keras
 import matplotlib.pyplot as plt
 from PIL import Image
 
-import findspark
-findspark.init()
-
 from pyspark.ml.linalg import Vectors
 
 
@@ -42,7 +39,7 @@ def load_images_to_list(path):
   return image_as_array_list
 
 
-def images_to_df(images_list, spark):
+def images_to_df(images_list,spark):
   """
   creates Spark Dataframe from 
   list of images as reshaped numpy arrays

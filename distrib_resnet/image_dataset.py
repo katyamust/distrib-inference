@@ -1,5 +1,6 @@
 from torch.utils.data import Dataset
 
+import numpy as np
 
 class ImageDataset(Dataset):
   def __init__(self, input_arr, transform=None):
