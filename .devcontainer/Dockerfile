@@ -58,5 +58,7 @@ USER ${NB_UID}
 RUN conda install -c conda-forge pyarrow
 RUN conda install pytest
 RUN conda install findspark
+RUN conda install torchvision
+RUN conda install tensorflow
 
 WORKDIR "${HOME}"
